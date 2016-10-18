@@ -44,7 +44,6 @@
     <Compile Include="BeamBuildingBuilder.cs" />
     <Compile Include="Hexa20oneElementColumn.cs" />
     <Compile Include="Hexa20SimpleCantileverBeam.cs" />
-    <Compile Include="HexaSimpleCantileverBeam.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
