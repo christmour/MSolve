@@ -259,7 +259,7 @@ namespace ISAAR.MSolve.PreProcessor.Elements
                 fXiP * fEtaP * fZetaP * (fXi + fEta + fZeta - 2.0),
 
                 fXiM * fEtaP * fZetaP * (-fXi + fEta + fZeta - 2.0),
-    
+
                 fXi2 * fEtaM * fZetaM,
 
                 fEta2 * fXiP * fZetaM,
@@ -522,10 +522,10 @@ namespace ISAAR.MSolve.PreProcessor.Elements
             faJ[1, 2] = faDS[20] * faXYZ[2, 0] + faDS[21] * faXYZ[2, 1] + faDS[22] * faXYZ[2, 2] + faDS[23] * faXYZ[2, 3] + faDS[24] * faXYZ[2, 4] + faDS[25] * faXYZ[2, 5] + faDS[26] * faXYZ[2, 6] + faDS[27] * faXYZ[2, 7]
                 + faDS[28] * faXYZ[2, 8] + faDS[29] * faXYZ[2, 9] + faDS[30] * faXYZ[2, 10] + faDS[31] * faXYZ[2, 11] + faDS[32] * faXYZ[2, 12] + faDS[33] * faXYZ[2, 13] + faDS[34] * faXYZ[2, 14] + faDS[35] * faXYZ[2, 15]
                 + faDS[36] * faXYZ[2, 16] + faDS[37] * faXYZ[2, 17] + faDS[38] * faXYZ[2, 18] + faDS[39] * faXYZ[2, 19];
-            
+
             faJ[2, 0] = faDS[40] * faXYZ[0, 0] + faDS[41] * faXYZ[0, 1] + faDS[42] * faXYZ[0, 2] + faDS[43] * faXYZ[0, 3] + faDS[44] * faXYZ[0, 4] + faDS[45] * faXYZ[0, 5] + faDS[46] * faXYZ[0, 6] + faDS[47] * faXYZ[0, 7]
                 + faDS[48] * faXYZ[0, 8] + faDS[49] * faXYZ[0, 9] + faDS[50] * faXYZ[0, 10] + faDS[51] * faXYZ[0, 11] + faDS[52] * faXYZ[0, 12] + faDS[53] * faXYZ[0, 13] + faDS[54] * faXYZ[0, 14] + faDS[55] * faXYZ[0, 15]
-                + faDS[56] * faXYZ[0, 16] + faDS[57] * faXYZ[0, 17] + faDS[58] * faXYZ[0, 18] + faDS[59] * faXYZ[0, 19];            
+                + faDS[56] * faXYZ[0, 16] + faDS[57] * faXYZ[0, 17] + faDS[58] * faXYZ[0, 18] + faDS[59] * faXYZ[0, 19];
             faJ[2, 1] = faDS[40] * faXYZ[1, 0] + faDS[41] * faXYZ[1, 1] + faDS[42] * faXYZ[1, 2] + faDS[43] * faXYZ[1, 3] + faDS[44] * faXYZ[1, 4] + faDS[45] * faXYZ[1, 5] + faDS[46] * faXYZ[1, 6] + faDS[47] * faXYZ[1, 7]
                 + faDS[48] * faXYZ[1, 8] + faDS[49] * faXYZ[1, 9] + faDS[50] * faXYZ[1, 10] + faDS[51] * faXYZ[1, 11] + faDS[52] * faXYZ[1, 12] + faDS[53] * faXYZ[1, 13] + faDS[54] * faXYZ[1, 14] + faDS[55] * faXYZ[1, 15]
                 + faDS[56] * faXYZ[1, 16] + faDS[57] * faXYZ[1, 17] + faDS[58] * faXYZ[1, 18] + faDS[59] * faXYZ[1, 19];
@@ -583,7 +583,7 @@ namespace ISAAR.MSolve.PreProcessor.Elements
 
             return b;
         }
-        
+
 
         private ShapeFunctionNaturalDerivatives3D[] CalculateShapeDerivativeValues(
             double xi, double eta, double zeta)
@@ -595,7 +595,7 @@ namespace ISAAR.MSolve.PreProcessor.Elements
                 shapeFunctionDerivatives[shapeFunction] = new ShapeFunctionNaturalDerivatives3D();
             }
 
-            
+
             double xiP = (1.0 + xi);
             double etaP = (1.0 + eta);
             double zetaP = (1.0 + zeta);
@@ -775,70 +775,70 @@ namespace ISAAR.MSolve.PreProcessor.Elements
 
 
             // Corresponding to xi
-        shapeFunctionDerivatives[0].Xi = 0.125 * etaM * zetaM * (2 * xi + eta + zeta + 1);
-        shapeFunctionDerivatives[1].Xi = 0.125 * etaM * zetaM * (2 * xi - eta - zeta - 1);
-        shapeFunctionDerivatives[2].Xi = 0.125 * etaP * zetaM * (2 * xi + eta - zeta - 1);
-        shapeFunctionDerivatives[3].Xi = 0.125 * etaP * zetaM * (2 * xi - eta + zeta + 1);
-        shapeFunctionDerivatives[4].Xi = 0.125 * etaM * zetaP * (2 * xi + eta - zeta + 1);
-        shapeFunctionDerivatives[5].Xi = 0.125 * etaM * zetaP * (2 * xi - eta + zeta - 1);
-        shapeFunctionDerivatives[6].Xi = 0.125 * etaP * zetaP * (2 * xi + eta + zeta - 1);
-        shapeFunctionDerivatives[7].Xi = 0.125 * etaP * zetaP * (2 * xi - eta - zeta + 1);
-        shapeFunctionDerivatives[8].Xi = -0.5 * xi * etaM * zetaM;
-        shapeFunctionDerivatives[9].Xi = 0.25 * etaM * etaP * zetaM;
-        shapeFunctionDerivatives[10].Xi = -0.5 * xi * etaP * zetaM;
-        shapeFunctionDerivatives[11].Xi = -0.25 * etaM * etaP * zetaM;
-        shapeFunctionDerivatives[12].Xi = -0.5 * xi * etaM * zetaP;
-        shapeFunctionDerivatives[13].Xi = 0.25 * etaM * etaP * zetaP;
-        shapeFunctionDerivatives[14].Xi = -0.5 * xi * etaP * zetaP;
-        shapeFunctionDerivatives[15].Xi = -0.25 * etaM * etaP * zetaP;
-        shapeFunctionDerivatives[16].Xi = -0.25 * etaM * zetaP * zetaM;
-        shapeFunctionDerivatives[17].Xi = 0.25 * etaM * zetaP * zetaM;
-        shapeFunctionDerivatives[18].Xi = 0.25 * etaP * zetaP * zetaM;
-        shapeFunctionDerivatives[19].Xi = -0.25 * etaP * zetaP * zetaM;
+            shapeFunctionDerivatives[0].Xi = 0.125 * etaM * zetaM * (2 * xi + eta + zeta + 1);
+            shapeFunctionDerivatives[1].Xi = 0.125 * etaM * zetaM * (2 * xi - eta - zeta - 1);
+            shapeFunctionDerivatives[2].Xi = 0.125 * etaP * zetaM * (2 * xi + eta - zeta - 1);
+            shapeFunctionDerivatives[3].Xi = 0.125 * etaP * zetaM * (2 * xi - eta + zeta + 1);
+            shapeFunctionDerivatives[4].Xi = 0.125 * etaM * zetaP * (2 * xi + eta - zeta + 1);
+            shapeFunctionDerivatives[5].Xi = 0.125 * etaM * zetaP * (2 * xi - eta + zeta - 1);
+            shapeFunctionDerivatives[6].Xi = 0.125 * etaP * zetaP * (2 * xi + eta + zeta - 1);
+            shapeFunctionDerivatives[7].Xi = 0.125 * etaP * zetaP * (2 * xi - eta - zeta + 1);
+            shapeFunctionDerivatives[8].Xi = -0.5 * xi * etaM * zetaM;
+            shapeFunctionDerivatives[9].Xi = 0.25 * etaM * etaP * zetaM;
+            shapeFunctionDerivatives[10].Xi = -0.5 * xi * etaP * zetaM;
+            shapeFunctionDerivatives[11].Xi = -0.25 * etaM * etaP * zetaM;
+            shapeFunctionDerivatives[12].Xi = -0.5 * xi * etaM * zetaP;
+            shapeFunctionDerivatives[13].Xi = 0.25 * etaM * etaP * zetaP;
+            shapeFunctionDerivatives[14].Xi = -0.5 * xi * etaP * zetaP;
+            shapeFunctionDerivatives[15].Xi = -0.25 * etaM * etaP * zetaP;
+            shapeFunctionDerivatives[16].Xi = -0.25 * etaM * zetaP * zetaM;
+            shapeFunctionDerivatives[17].Xi = 0.25 * etaM * zetaP * zetaM;
+            shapeFunctionDerivatives[18].Xi = 0.25 * etaP * zetaP * zetaM;
+            shapeFunctionDerivatives[19].Xi = -0.25 * etaP * zetaP * zetaM;
 
-// Corresponding to eta
-        shapeFunctionDerivatives[0].Eta = 0.125 * xiM * zetaM * (xi + 2 * eta + zeta + 1);
-        shapeFunctionDerivatives[1].Eta = 0.125 * xiP * zetaM * (-xi + 2 * eta + zeta + 1);
-        shapeFunctionDerivatives[2].Eta = 0.125 * xiP * zetaM * (xi + 2 * eta - zeta - 1);
-        shapeFunctionDerivatives[3].Eta = 0.125 * xiM * zetaM * (-xi + 2 * eta - zeta - 1);
-        shapeFunctionDerivatives[4].Eta = 0.125 * xiM * zetaP * (xi + 2 * eta - zeta + 1);
-        shapeFunctionDerivatives[5].Eta = 0.125 * xiP * zetaP * (-xi + 2 * eta - zeta + 1);
-        shapeFunctionDerivatives[6].Eta = 0.125 * xiP * zetaP * (xi + 2 * eta + zeta - 1);
-        shapeFunctionDerivatives[7].Eta = 0.125 * xiM * zetaP * (-xi + 2 * eta + zeta - 1);
-        shapeFunctionDerivatives[8].Eta = -0.25 * xiP * xiM * zetaM;
-        shapeFunctionDerivatives[9].Eta = -0.5 * xiP * eta * zetaM;
-        shapeFunctionDerivatives[10].Eta = 0.25 * xiM * xiP * zetaM;
-        shapeFunctionDerivatives[11].Eta = -0.5 * xiM * eta * zetaM;
-        shapeFunctionDerivatives[12].Eta = -0.25 * xiP * xiM * zetaP;
-        shapeFunctionDerivatives[13].Eta = -0.5 * eta * xiP * zetaP;
-        shapeFunctionDerivatives[14].Eta = 0.25 * xiM * xiP * zetaP;
-        shapeFunctionDerivatives[15].Eta = -0.5 * xiM * eta * zetaP;
-        shapeFunctionDerivatives[16].Eta = -0.25 * xiM * zetaP * zetaM;
-        shapeFunctionDerivatives[17].Eta = -0.25 * xiP * zetaP * zetaM;
-        shapeFunctionDerivatives[18].Eta = 0.25 * xiP * zetaP * zetaM;
-        shapeFunctionDerivatives[19].Eta = 0.25 * xiM * zetaP * zetaM;
+            // Corresponding to eta
+            shapeFunctionDerivatives[0].Eta = 0.125 * xiM * zetaM * (xi + 2 * eta + zeta + 1);
+            shapeFunctionDerivatives[1].Eta = 0.125 * xiP * zetaM * (-xi + 2 * eta + zeta + 1);
+            shapeFunctionDerivatives[2].Eta = 0.125 * xiP * zetaM * (xi + 2 * eta - zeta - 1);
+            shapeFunctionDerivatives[3].Eta = 0.125 * xiM * zetaM * (-xi + 2 * eta - zeta - 1);
+            shapeFunctionDerivatives[4].Eta = 0.125 * xiM * zetaP * (xi + 2 * eta - zeta + 1);
+            shapeFunctionDerivatives[5].Eta = 0.125 * xiP * zetaP * (-xi + 2 * eta - zeta + 1);
+            shapeFunctionDerivatives[6].Eta = 0.125 * xiP * zetaP * (xi + 2 * eta + zeta - 1);
+            shapeFunctionDerivatives[7].Eta = 0.125 * xiM * zetaP * (-xi + 2 * eta + zeta - 1);
+            shapeFunctionDerivatives[8].Eta = -0.25 * xiP * xiM * zetaM;
+            shapeFunctionDerivatives[9].Eta = -0.5 * xiP * eta * zetaM;
+            shapeFunctionDerivatives[10].Eta = 0.25 * xiM * xiP * zetaM;
+            shapeFunctionDerivatives[11].Eta = -0.5 * xiM * eta * zetaM;
+            shapeFunctionDerivatives[12].Eta = -0.25 * xiP * xiM * zetaP;
+            shapeFunctionDerivatives[13].Eta = -0.5 * eta * xiP * zetaP;
+            shapeFunctionDerivatives[14].Eta = 0.25 * xiM * xiP * zetaP;
+            shapeFunctionDerivatives[15].Eta = -0.5 * xiM * eta * zetaP;
+            shapeFunctionDerivatives[16].Eta = -0.25 * xiM * zetaP * zetaM;
+            shapeFunctionDerivatives[17].Eta = -0.25 * xiP * zetaP * zetaM;
+            shapeFunctionDerivatives[18].Eta = 0.25 * xiP * zetaP * zetaM;
+            shapeFunctionDerivatives[19].Eta = 0.25 * xiM * zetaP * zetaM;
 
-// Corresponding to zeta
-        shapeFunctionDerivatives[0].Zeta = 0.125 * xiM * etaM * (xi + eta + 2 * zeta + 1);
-        shapeFunctionDerivatives[1].Zeta = 0.125 * xiP * etaM * (-xi + eta + 2 * zeta + 1);
-        shapeFunctionDerivatives[2].Zeta = 0.125 * xiP * etaP * (-xi - eta + 2 * zeta + 1);
-        shapeFunctionDerivatives[3].Zeta = 0.125 * xiM * etaP * (xi - eta + 2 * zeta + 1);
-        shapeFunctionDerivatives[4].Zeta = 0.125 * xiM * etaM * (-xi - eta + 2 * zeta - 1);
-        shapeFunctionDerivatives[5].Zeta = 0.125 * xiP * etaM * (xi - eta + 2 * zeta - 1);
-        shapeFunctionDerivatives[6].Zeta = 0.125 * xiP * etaP * (xi + eta + 2 * zeta - 1);
-        shapeFunctionDerivatives[7].Zeta = 0.125 * xiM * etaP * (-xi + eta + 2 * zeta - 1);
-        shapeFunctionDerivatives[8].Zeta = -0.25 * xiP * xiM * etaM;
-        shapeFunctionDerivatives[9].Zeta = -0.25 * xiP * etaP * etaM;
-        shapeFunctionDerivatives[10].Zeta = -0.25 * xiM * xiP * etaP;
-        shapeFunctionDerivatives[11].Zeta = -0.25 * xiM * etaP * etaM;
-        shapeFunctionDerivatives[12].Zeta = 0.25 * xiP * xiM * etaM;
-        shapeFunctionDerivatives[13].Zeta = 0.25 * xiP * etaP * etaM;
-        shapeFunctionDerivatives[14].Zeta = 0.25 * xiM * xiP * etaP;
-        shapeFunctionDerivatives[15].Zeta = 0.25 * xiM * etaM * etaP;
-        shapeFunctionDerivatives[16].Zeta = -0.5 * xiM * etaM * zeta;
-        shapeFunctionDerivatives[17].Zeta = -0.5 * xiP * etaM * zeta;
-        shapeFunctionDerivatives[18].Zeta = -0.5 * xiP * etaP * zeta;
-        shapeFunctionDerivatives[19].Zeta = -0.5 * xiM * etaP * zeta;
+            // Corresponding to zeta
+            shapeFunctionDerivatives[0].Zeta = 0.125 * xiM * etaM * (xi + eta + 2 * zeta + 1);
+            shapeFunctionDerivatives[1].Zeta = 0.125 * xiP * etaM * (-xi + eta + 2 * zeta + 1);
+            shapeFunctionDerivatives[2].Zeta = 0.125 * xiP * etaP * (-xi - eta + 2 * zeta + 1);
+            shapeFunctionDerivatives[3].Zeta = 0.125 * xiM * etaP * (xi - eta + 2 * zeta + 1);
+            shapeFunctionDerivatives[4].Zeta = 0.125 * xiM * etaM * (-xi - eta + 2 * zeta - 1);
+            shapeFunctionDerivatives[5].Zeta = 0.125 * xiP * etaM * (xi - eta + 2 * zeta - 1);
+            shapeFunctionDerivatives[6].Zeta = 0.125 * xiP * etaP * (xi + eta + 2 * zeta - 1);
+            shapeFunctionDerivatives[7].Zeta = 0.125 * xiM * etaP * (-xi + eta + 2 * zeta - 1);
+            shapeFunctionDerivatives[8].Zeta = -0.25 * xiP * xiM * etaM;
+            shapeFunctionDerivatives[9].Zeta = -0.25 * xiP * etaP * etaM;
+            shapeFunctionDerivatives[10].Zeta = -0.25 * xiM * xiP * etaP;
+            shapeFunctionDerivatives[11].Zeta = -0.25 * xiM * etaP * etaM;
+            shapeFunctionDerivatives[12].Zeta = 0.25 * xiP * xiM * etaM;
+            shapeFunctionDerivatives[13].Zeta = 0.25 * xiP * etaP * etaM;
+            shapeFunctionDerivatives[14].Zeta = 0.25 * xiM * xiP * etaP;
+            shapeFunctionDerivatives[15].Zeta = 0.25 * xiM * etaM * etaP;
+            shapeFunctionDerivatives[16].Zeta = -0.5 * xiM * etaM * zeta;
+            shapeFunctionDerivatives[17].Zeta = -0.5 * xiP * etaM * zeta;
+            shapeFunctionDerivatives[18].Zeta = -0.5 * xiP * etaP * zeta;
+            shapeFunctionDerivatives[19].Zeta = -0.5 * xiM * etaP * zeta;
 
             return shapeFunctionDerivatives;
         }
@@ -957,7 +957,7 @@ namespace ISAAR.MSolve.PreProcessor.Elements
             var m = MassMatrix(element);
             m.LinearCombination(new double[] { RayleighAlpha, RayleighBeta }, new IMatrix2D<double>[] { MassMatrix(element), StiffnessMatrix(element) });
             return m;
-         }
+        }
         public Tuple<double[], double[]> CalculateStresses(Element element, double[] localDisplacements, double[] localdDisplacements)
         {
             double[,] faXYZ = GetCoordinates(element);
@@ -994,7 +994,7 @@ namespace ISAAR.MSolve.PreProcessor.Elements
 
         public double[] CalculateForces(Element element, double[] localTotalDisplacements, double[] localdDisplacements)
         {
-            
+
             double[,] faStresses = new double[iInt3, 6];
             for (int i = 0; i < materialsAtGaussPoints.Length; i++)
                 for (int j = 0; j < 6; j++) faStresses[i, j] = materialsAtGaussPoints[i].Stresses[j];
@@ -1010,7 +1010,7 @@ namespace ISAAR.MSolve.PreProcessor.Elements
 
             //CalculateGaussMatrices(faXYZ);
             CalcH20GaussMatrices(ref iInt, faXYZ, faWeight, faS, faDS, faJ, faDetJ, faB);
-            CalcH20Forces(ref iInt, faB,  faWeight, faStresses, faForces);
+            CalcH20Forces(ref iInt, faB, faWeight, faStresses, faForces);
 
             return faForces;
         }
@@ -1102,8 +1102,8 @@ namespace ISAAR.MSolve.PreProcessor.Elements
                 nablaShapeFunctions[56], nablaShapeFunctions[57], nablaShapeFunctions[58], nablaShapeFunctions[59],
                 jacobian.Item1[0, 0], jacobian.Item1[0, 1], jacobian.Item1[0, 2], jacobian.Item1[1, 0], jacobian.Item1[1, 1], jacobian.Item1[1, 2], jacobian.Item1[2, 0], jacobian.Item1[2, 1], jacobian.Item1[2, 2],
                 jacobian.Item2[0, 0], jacobian.Item2[0, 1], jacobian.Item2[0, 2], jacobian.Item2[1, 0], jacobian.Item2[1, 1], jacobian.Item2[1, 2], jacobian.Item2[2, 0], jacobian.Item2[2, 1], jacobian.Item2[2, 2]
-            };           
-         }
+            };
+        }
 
         private double[] GetNaturalCoordinates(Element element, Node node)
         {
