@@ -33,176 +33,176 @@ namespace ISAAR.MSolve.SamplesConsole
                 nodeID++;
             }
 
-                          
-                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX, Y = startY + 0.125, Z = startZ  });
 
-                     model.NodesDictionary[nodeID].Constraints.Add(DOFType.X);
-                     model.NodesDictionary[nodeID].Constraints.Add(DOFType.Y);
-                     model.NodesDictionary[nodeID].Constraints.Add(DOFType.Z);
+            model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX, Y = startY + 0.125, Z = startZ });
 
-                    model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX, Y = startY , Z = startZ + 0.125  });
+            model.NodesDictionary[nodeID].Constraints.Add(DOFType.X);
+            model.NodesDictionary[nodeID].Constraints.Add(DOFType.Y);
+            model.NodesDictionary[nodeID].Constraints.Add(DOFType.Z);
 
-                    model.NodesDictionary[nodeID + 1].Constraints.Add(DOFType.X);
-                    model.NodesDictionary[nodeID + 1].Constraints.Add(DOFType.Y);
-                    model.NodesDictionary[nodeID + 1].Constraints.Add(DOFType.Z);
+            model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX, Y = startY, Z = startZ + 0.125 });
 
-                    model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX, Y = startY + 0.25, Z = startZ + 0.125 });
+            model.NodesDictionary[nodeID + 1].Constraints.Add(DOFType.X);
+            model.NodesDictionary[nodeID + 1].Constraints.Add(DOFType.Y);
+            model.NodesDictionary[nodeID + 1].Constraints.Add(DOFType.Z);
 
-                    model.NodesDictionary[nodeID + 2].Constraints.Add(DOFType.X);
-                    model.NodesDictionary[nodeID + 2].Constraints.Add(DOFType.Y);
-                    model.NodesDictionary[nodeID + 2].Constraints.Add(DOFType.Z);
+            model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX, Y = startY + 0.25, Z = startZ + 0.125 });
 
-                    model.NodesDictionary.Add(nodeID + 3, new Node() { ID = nodeID + 3, X = startX, Y = startY + 0.125, Z = startZ + 0.25 });
+            model.NodesDictionary[nodeID + 2].Constraints.Add(DOFType.X);
+            model.NodesDictionary[nodeID + 2].Constraints.Add(DOFType.Y);
+            model.NodesDictionary[nodeID + 2].Constraints.Add(DOFType.Z);
 
-                    model.NodesDictionary[nodeID + 3].Constraints.Add(DOFType.X);
-                    model.NodesDictionary[nodeID + 3].Constraints.Add(DOFType.Y);
-                    model.NodesDictionary[nodeID + 3].Constraints.Add(DOFType.Z);
+            model.NodesDictionary.Add(nodeID + 3, new Node() { ID = nodeID + 3, X = startX, Y = startY + 0.125, Z = startZ + 0.25 });
 
-                nodeID = nodeID+4;
+            model.NodesDictionary[nodeID + 3].Constraints.Add(DOFType.X);
+            model.NodesDictionary[nodeID + 3].Constraints.Add(DOFType.Y);
+            model.NodesDictionary[nodeID + 3].Constraints.Add(DOFType.Z);
 
+            nodeID = nodeID + 4;
 
-            for (int j = 0; j < 4; j++)
-            {
-                    if (nodeID % 2 == 0)
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.125 , Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    else
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.125 , Y = startY, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    nodeID++;
-             }
-
-
-            for (int j = 0; j < 4; j++)
-            {
-                    if (nodeID % 2 == 0)
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.25 , Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    else
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.25 , Y = startY, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    nodeID++;
-            }
-            
-
-           
-                model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.25, Y = startY + 0.125, Z = startZ });
-                model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX + 0.25, Y = startY, Z = startZ + 0.125 });
-                model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX + 0.25, Y = startY + 0.25, Z = startZ + 0.125 });
-                model.NodesDictionary.Add(nodeID +3, new Node() { ID = nodeID + 3, X = startX + 0.25, Y = startY + 0.125, Z = startZ + 0.25 });
-
-                nodeID = nodeID + 4;
-
-            for (int j = 0; j < 4; j++)
-            {
-                    if (nodeID % 2 == 0)
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.375 , Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    else
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.375 , Y = startY, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    nodeID++;
-            }
-
-
-            for (int j = 0; j < 4; j++)
-            {
-                    if (nodeID % 2 == 0)
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.5 , Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    else
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.5 , Y = startY, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    nodeID++;
-           }
-           
-
-           
-                model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.5, Y = startY + 0.125, Z = startZ });
-                model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX + 0.5, Y = startY, Z = startZ + 0.125 });
-                model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX + 0.5, Y = startY + 0.25, Z = startZ + 0.125 });
-                model.NodesDictionary.Add(nodeID + 3, new Node() { ID = nodeID + 3, X = startX + 0.5, Y = startY + 0.125, Z = startZ + 0.25 });
-
-                nodeID = nodeID + 4;
 
             for (int j = 0; j < 4; j++)
             {
                 if (nodeID % 2 == 0)
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.625 , Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    else
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.625 , Y = startY, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    nodeID++;
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.125, Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
+                }
+                else
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.125, Y = startY, Z = startZ + 0.25 * (j / 2) });
+                }
+                nodeID++;
             }
 
 
             for (int j = 0; j < 4; j++)
             {
-                    if (nodeID % 2 == 0)
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.75 , Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    else
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.75 , Y = startY, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    nodeID++;
+                if (nodeID % 2 == 0)
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.25, Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
+                }
+                else
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.25, Y = startY, Z = startZ + 0.25 * (j / 2) });
+                }
+                nodeID++;
             }
-           
 
-            
-                model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.75, Y = startY + 0.125, Z = startZ });
-                model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX + 0.75, Y = startY, Z = startZ + 0.125 });
-                model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX + 0.75, Y = startY + 0.25, Z = startZ + 0.125 });
-                model.NodesDictionary.Add(nodeID + 3, new Node() { ID = nodeID + 3, X = startX + 0.75, Y = startY + 0.125, Z = startZ + 0.25 });
 
-                nodeID = nodeID + 4;
+
+            model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.25, Y = startY + 0.125, Z = startZ });
+            model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX + 0.25, Y = startY, Z = startZ + 0.125 });
+            model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX + 0.25, Y = startY + 0.25, Z = startZ + 0.125 });
+            model.NodesDictionary.Add(nodeID + 3, new Node() { ID = nodeID + 3, X = startX + 0.25, Y = startY + 0.125, Z = startZ + 0.25 });
+
+            nodeID = nodeID + 4;
 
             for (int j = 0; j < 4; j++)
             {
-                    if (nodeID % 2 == 0)
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.875 , Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    else
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.875 , Y = startY, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    nodeID++;
+                if (nodeID % 2 == 0)
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.375, Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
+                }
+                else
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.375, Y = startY, Z = startZ + 0.25 * (j / 2) });
+                }
+                nodeID++;
             }
 
 
             for (int j = 0; j < 4; j++)
             {
-                    if (nodeID % 2 == 0)
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 1.0 , Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
-                    }
-                    else
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 1.0 , Y = startY, Z = startZ + 0.25 * (j / 2) });
-                    }
-                   nodeID++;                
+                if (nodeID % 2 == 0)
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.5, Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
+                }
+                else
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.5, Y = startY, Z = startZ + 0.25 * (j / 2) });
+                }
+                nodeID++;
             }
 
-            
-                model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 1.0, Y = startY + 0.125, Z = startZ });
-                model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX + 1.0, Y = startY, Z = startZ + 0.125 });
-                model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX + 1.0, Y = startY + 0.25, Z = startZ + 0.125 });
-                model.NodesDictionary.Add(nodeID + 3, new Node() { ID = nodeID + 3, X = startX + 1.0, Y = startY + 0.125, Z = startZ + 0.25 });
 
-                nodeID = nodeID + 4;
+
+            model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.5, Y = startY + 0.125, Z = startZ });
+            model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX + 0.5, Y = startY, Z = startZ + 0.125 });
+            model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX + 0.5, Y = startY + 0.25, Z = startZ + 0.125 });
+            model.NodesDictionary.Add(nodeID + 3, new Node() { ID = nodeID + 3, X = startX + 0.5, Y = startY + 0.125, Z = startZ + 0.25 });
+
+            nodeID = nodeID + 4;
+
+            for (int j = 0; j < 4; j++)
+            {
+                if (nodeID % 2 == 0)
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.625, Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
+                }
+                else
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.625, Y = startY, Z = startZ + 0.25 * (j / 2) });
+                }
+                nodeID++;
+            }
+
+
+            for (int j = 0; j < 4; j++)
+            {
+                if (nodeID % 2 == 0)
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.75, Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
+                }
+                else
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.75, Y = startY, Z = startZ + 0.25 * (j / 2) });
+                }
+                nodeID++;
+            }
+
+
+
+            model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.75, Y = startY + 0.125, Z = startZ });
+            model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX + 0.75, Y = startY, Z = startZ + 0.125 });
+            model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX + 0.75, Y = startY + 0.25, Z = startZ + 0.125 });
+            model.NodesDictionary.Add(nodeID + 3, new Node() { ID = nodeID + 3, X = startX + 0.75, Y = startY + 0.125, Z = startZ + 0.25 });
+
+            nodeID = nodeID + 4;
+
+            for (int j = 0; j < 4; j++)
+            {
+                if (nodeID % 2 == 0)
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.875, Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
+                }
+                else
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.875, Y = startY, Z = startZ + 0.25 * (j / 2) });
+                }
+                nodeID++;
+            }
+
+
+            for (int j = 0; j < 4; j++)
+            {
+                if (nodeID % 2 == 0)
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 1.0, Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
+                }
+                else
+                {
+                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 1.0, Y = startY, Z = startZ + 0.25 * (j / 2) });
+                }
+                nodeID++;
+            }
+
+
+            model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 1.0, Y = startY + 0.125, Z = startZ });
+            model.NodesDictionary.Add(nodeID + 1, new Node() { ID = nodeID + 1, X = startX + 1.0, Y = startY, Z = startZ + 0.125 });
+            model.NodesDictionary.Add(nodeID + 2, new Node() { ID = nodeID + 2, X = startX + 1.0, Y = startY + 0.25, Z = startZ + 0.125 });
+            model.NodesDictionary.Add(nodeID + 3, new Node() { ID = nodeID + 3, X = startX + 1.0, Y = startY + 0.125, Z = startZ + 0.25 });
+
+            nodeID = nodeID + 4;
 
             int elementID = startElementID;
             Element e;
@@ -223,7 +223,7 @@ namespace ISAAR.MSolve.SamplesConsole
                 };
 
                 e.NodesDictionary.Add(startNodeID + 12 * i, model.NodesDictionary[startNodeID + 12 * i]);
-                e.NodesDictionary.Add(startNodeID + 12* i + 12, model.NodesDictionary[startNodeID + 12 * i + 12]);
+                e.NodesDictionary.Add(startNodeID + 12 * i + 12, model.NodesDictionary[startNodeID + 12 * i + 12]);
                 e.NodesDictionary.Add(startNodeID + 12 * i + 13, model.NodesDictionary[startNodeID + 12 * i + 13]);
                 e.NodesDictionary.Add(startNodeID + 12 * i + 1, model.NodesDictionary[startNodeID + 12 * i + 1]);
 
