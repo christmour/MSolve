@@ -17,7 +17,10 @@ namespace ISAAR.MSolve.PreProcessor
         private readonly Dictionary<int, Subdomain> subdomainsDictionary = new Dictionary<int, Subdomain>();
         private readonly Dictionary<int, Cluster> clustersDictionary = new Dictionary<int, Cluster>();
         private readonly Dictionary<int, Dictionary<DOFType, int>> nodalDOFsDictionary = new Dictionary<int, Dictionary<DOFType, int>>();
-        private readonly IList<Load> loads = new List<Load>();
+        private readonly IList<nodalLoad> loads = new List<nodalLoad>();
+
+        private readonly IList<DistributedLoadH8> distributedloads = new List<DistributedLoadH8>();
+
         private readonly IList<ElementMassAccelerationLoad> elementMassAccelerationLoads = new List<ElementMassAccelerationLoad>();
         private readonly IList<MassAccelerationLoad> massAccelerationLoads = new List<MassAccelerationLoad>();
         private readonly IList<IMassAccelerationHistoryLoad> massAccelerationHistoryLoads = new List<IMassAccelerationHistoryLoad>();
@@ -69,10 +72,16 @@ namespace ISAAR.MSolve.PreProcessor
             get { return clustersDictionary.Values.ToList<Cluster>(); }
         }
 
-        public IList<Load> Loads
+        public IList<nodalLoad> Loads
         {
             get { return loads; }
         }
+
+        public IList<DistributedLoadH8> Distributedload
+        {
+            get { return distributedloads; }
+        }
+
 
         public IList<ElementMassAccelerationLoad> ElementMassAccelerationLoads
         {
@@ -228,7 +237,7 @@ namespace ISAAR.MSolve.PreProcessor
         {
             foreach (Subdomain subdomain in subdomainsDictionary.Values)
                 Array.Clear(subdomain.Forces, 0, subdomain.Forces.Length);
-            foreach (Load load in loads)
+            foreach (nodalLoad load in loads)
                 foreach (Subdomain subdomain in load.Node.SubdomainsDictionary.Values)
                 {
                     int dof = subdomain.NodalDOFsDictionary[load.Node.ID][load.DOF];

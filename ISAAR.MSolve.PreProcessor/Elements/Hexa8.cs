@@ -682,5 +682,80 @@ namespace ISAAR.MSolve.PreProcessor.Elements
         }
 
         #endregion
+
+        public double[] CalculateNodalForces(Element element, DistributedLoadH8 distributedLoad)//, Load nodalLoad1, Load nodalLoad2, Load nodalLoad3, Load nodalLoad4)
+        {
+            double[] naturalcoordinatesNode1 = GetNaturalCoordinates(element, distributedLoad.Node1);
+            double[] naturalcoordinatesNode2 = GetNaturalCoordinates(element, distributedLoad.Node2);
+            double[] naturalcoordinatesNode3 = GetNaturalCoordinates(element, distributedLoad.Node3);
+            double[] naturalcoordinatesNode4 = GetNaturalCoordinates(element, distributedLoad.Node4);
+
+            //var shapeFunctions1 = CalcH8Shape(naturalcoordinatesNode1[0], naturalcoordinatesNode1[1], naturalcoordinatesNode1[2]);
+            //var shapeFunctions2 = CalcH8Shape(naturalcoordinatesNode2[0], naturalcoordinatesNode2[1], naturalcoordinatesNode2[2]);
+            //var shapeFunctions3 = CalcH8Shape(naturalcoordinatesNode3[0], naturalcoordinatesNode3[1], naturalcoordinatesNode3[2]);
+            //var shapeFunctions4 = CalcH8Shape(naturalcoordinatesNode4[0], naturalcoordinatesNode4[1], naturalcoordinatesNode4[2]);
+
+            //double[] forses;
+            //for (int i = 0; i < 3; i++)
+            //{
+            //double[] forses = (shapeFunctions1 + shapeFunctions2 + shapeFunctions3 + shapeFunctions4) * distributedLoad.AmountX;
+
+
+            //}
+            double[,] coordinates = this.GetCoordinates(element);
+            GaussLegendrePoint3D[] integrationPoints = this.CalculateGaussMatrices(coordinates);
+
+            double[] forses = new double[3];
+            double[] nodalForses = new double[24];
+
+            foreach (GaussLegendrePoint3D intPoint in integrationPoints)
+            {
+                double[] shapeFunctionValues = this.CalcH8Shape(intPoint.Xi, intPoint.Eta, intPoint.Zeta);
+                ShapeFunctionNaturalDerivatives3D[] shapeDerivativeValues =
+                            this.CalculateShapeDerivativeValues(intPoint.Xi, intPoint.Eta, intPoint.Zeta);
+                Jacobian3D jacobian = new Jacobian3D(coordinates, shapeDerivativeValues);
+                double weightFactor = intPoint.WeightFactor * intPoint.WeightFactor * intPoint.WeightFactor *
+                                              jacobian.Determinant;
+
+                forses[0] = (shapeFunctionValues[0] + shapeFunctionValues[1] + shapeFunctionValues[2] + shapeFunctionValues[3]) * distributedLoad.AmountX;
+                    forses[1] = (shapeFunctionValues[0] + shapeFunctionValues[1] + shapeFunctionValues[2] + shapeFunctionValues[3]) * distributedLoad.AmountY;
+                    forses[2] = (shapeFunctionValues[0] + shapeFunctionValues[1] + shapeFunctionValues[2] + shapeFunctionValues[3]) * distributedLoad.AmountZ;
+
+                for (int i = 0; i < 24; i++)
+                {
+                    
+                    nodalForses[i] = nodalForses[i] + shapeFunctionValues[i/3] * forses[i] * weightFactor;
+                                        
+                }                
+            }
+
+            //nodalLoad1.Amount = nodalForses[2];
+            //nodalLoad1.DOF = distributedLoad.DOF;
+
+            //nodalLoad2.Amount = nodalForses[5];
+            //nodalLoad2.DOF = distributedLoad.DOF;
+
+            //nodalLoad3.Amount = nodalForses[8];
+            //nodalLoad3.DOF = distributedLoad.DOF;
+
+            //nodalLoad4.Amount = nodalForses[11];
+            //nodalLoad4.DOF = distributedLoad.DOF;
+
+            double[] nodalLoads = new double[4];
+
+            nodalLoads[0] = nodalForses[2];
+            nodalLoads[1] = nodalForses[5];
+            nodalLoads[2] = nodalForses[8];
+            nodalLoads[3] = nodalForses[11];
+
+            return nodalLoads;
+            //return nodalLoad2;
+            //return nodalLoad3;
+            //return nodalLoad4;
+
+        }
+
+
+
     }
 }

@@ -54,11 +54,9 @@ namespace ISAAR.MSolve.SamplesConsole
             ElasticMaterial3D material = new ElasticMaterial3D()
             {
                 YoungModulus = 2.0e7,
-                PoissonRatio = 0.3,
+                PoissonRatio = 0.3
             };
-
-
-
+            
             for (int i = 0; i < 4; i++)
             {
 

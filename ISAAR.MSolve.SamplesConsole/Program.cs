@@ -20,7 +20,7 @@ namespace ISAAR.MSolve.SamplesConsole
             model.SubdomainsDictionary.Add(1, new Subdomain() { ID = 1 });
             BeamBuildingBuilder.MakeBeamBuilding(model, 20, 20, 20, 5, 4, model.NodesDictionary.Count + 1,
                 model.ElementsDictionary.Count + 1, 1, 4, false, false);
-            model.Loads.Add(new Load() { Amount = -100, Node = model.Nodes[21], DOF = DOFType.X });
+            model.Loads.Add(new nodalLoad() { Amount = -100, Node = model.Nodes[21], DOF = DOFType.X });
             model.ConnectDataStructures();
 
             SolverSkyline solver = new SolverSkyline(model);
@@ -64,11 +64,37 @@ namespace ISAAR.MSolve.SamplesConsole
                        
             HexaSimpleCantileverBeam.MakeCantileverBeam(model, 0, 0, 0, model.NodesDictionary.Count + 1, model.ElementsDictionary.Count + 1, 1);
 
-            model.Loads.Add(new Load() { Amount = -0.25, Node = model.Nodes[16], DOF = DOFType.Z });
-            model.Loads.Add(new Load() { Amount = -0.25, Node = model.Nodes[17], DOF = DOFType.Z });
-            model.Loads.Add(new Load() { Amount = -0.25, Node = model.Nodes[18], DOF = DOFType.Z });
-            model.Loads.Add(new Load() { Amount = -0.25, Node = model.Nodes[19], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.25, Node = model.Nodes[16], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.25, Node = model.Nodes[17], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.25, Node = model.Nodes[18], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.25, Node = model.Nodes[19], DOF = DOFType.Z });
 
+            model.ConnectDataStructures();
+
+            SolverSkyline solver = new SolverSkyline(model);
+            ProblemStructural provider = new ProblemStructural(model, solver.SubdomainsDictionary);
+            LinearAnalyzer analyzer = new LinearAnalyzer(solver, solver.SubdomainsDictionary);
+            StaticAnalyzer parentAnalyzer = new StaticAnalyzer(provider, analyzer, solver.SubdomainsDictionary);
+
+            analyzer.LogFactories[1] = new LinearAnalyzerLogFactory(new int[] { 47 });
+
+            parentAnalyzer.BuildMatrices();
+            parentAnalyzer.Initialize();
+            parentAnalyzer.Solve();
+        }
+
+        private static void SolveoneHexaDistributedLoad()
+        {
+            VectorExtensions.AssignTotalAffinityCount();
+            Model model = new Model();
+            model.SubdomainsDictionary.Add(1, new Subdomain() { ID = 1 });
+
+            HexaSimpleCantileverBeam.MakeCantileverBeam(model, 0, 0, 0, model.NodesDictionary.Count + 1, model.ElementsDictionary.Count + 1, 1);
+
+            //model.Loads.Add(new DistributedLoadH8() { int ID = 2,  Node1 = model.Nodes[1], Node2 = model.Nodes[2], Node3 = model.Nodes[3], Node4 = model.Nodes[4],  DOF = DOFType.Z, AmountX = 0.0 , AmountY = 0.0, AmountZ = -1.0});
+
+            model.Distributedload.Add(new DistributedLoadH8() { ID = 1, AmountX = 0, AmountY = 0, AmountZ = 1, DOF = DOFType.Z, Node1 = model.Nodes[1], Node2 = model.Nodes[2], Node3 = model.Nodes[3], Node4 = model.Nodes[4] });
+            
             model.ConnectDataStructures();
 
             SolverSkyline solver = new SolverSkyline(model);
@@ -85,10 +111,82 @@ namespace ISAAR.MSolve.SamplesConsole
 
 
 
+
+
+
+        private static void SolveHexa20CantileverBeam()
+        {
+            VectorExtensions.AssignTotalAffinityCount();
+            Model model = new Model();
+            model.SubdomainsDictionary.Add(1, new Subdomain() { ID = 1 });
+
+            Hexa20SimpleCantileverBeam.MakeCantileverBeam(model, 0, 0, 0, model.NodesDictionary.Count + 1, model.ElementsDictionary.Count + 1, 1);
+
+            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[48], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[49], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[50], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[51], DOF = DOFType.Z });
+
+            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[52], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[53], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[54], DOF = DOFType.Z });
+            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[55], DOF = DOFType.Z });
+
+            
+            model.ConnectDataStructures();
+
+            SolverSkyline solver = new SolverSkyline(model);
+            ProblemStructural provider = new ProblemStructural(model, solver.SubdomainsDictionary);
+            LinearAnalyzer analyzer = new LinearAnalyzer(solver, solver.SubdomainsDictionary);
+            StaticAnalyzer parentAnalyzer = new StaticAnalyzer(provider, analyzer, solver.SubdomainsDictionary);
+
+            analyzer.LogFactories[1] = new LinearAnalyzerLogFactory(new int[] { 50 });
+
+            parentAnalyzer.BuildMatrices();
+            parentAnalyzer.Initialize();
+            parentAnalyzer.Solve();
+        }
+
+        private static void SolveHexa20oneElementColumn()
+        {
+            VectorExtensions.AssignTotalAffinityCount();
+            Model model = new Model();
+            model.SubdomainsDictionary.Add(1, new Subdomain() { ID = 1 });
+
+            Hexa20oneElementColumn.MakeCantileverBeam(model, 0, 0, 0, model.NodesDictionary.Count + 1, model.ElementsDictionary.Count + 1, 1);
+
+            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[5], DOF = DOFType.X });
+            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[6], DOF = DOFType.X });
+            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[17], DOF = DOFType.X });
+            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[18], DOF = DOFType.X });
+
+            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[7], DOF = DOFType.X });
+            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[10], DOF = DOFType.X });
+            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[19], DOF = DOFType.X });
+            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[11], DOF = DOFType.X });
+
+
+            model.ConnectDataStructures();
+
+            SolverSkyline solver = new SolverSkyline(model);
+            ProblemStructural provider = new ProblemStructural(model, solver.SubdomainsDictionary);
+            LinearAnalyzer analyzer = new LinearAnalyzer(solver, solver.SubdomainsDictionary);
+            StaticAnalyzer parentAnalyzer = new StaticAnalyzer(provider, analyzer, solver.SubdomainsDictionary);
+
+            analyzer.LogFactories[1] = new LinearAnalyzerLogFactory(new int[] { 19 });
+
+            parentAnalyzer.BuildMatrices();
+            parentAnalyzer.Initialize();
+            parentAnalyzer.Solve();
+        }
+
         static void Main(string[] args)
         {
             //SolveBuildingInNoSoilSmall();
-            SolveHexaCantileverBeam();
+            //SolveHexaCantileverBeam();  
+            //SolveHexa20CantileverBeam();
+            //SolveHexa20oneElementColumn();
+
         }
     }
 }
