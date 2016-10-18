@@ -55,7 +55,7 @@ namespace ISAAR.MSolve.SamplesConsole
             parentAnalyzer.Initialize();
             parentAnalyzer.Solve();
         }
-        private static void SolveHexa20CantileverBeam()
+          private static void SolveHexa20CantileverBeam()
         {
             VectorExtensions.AssignTotalAffinityCount();
             Model model = new Model();
@@ -63,17 +63,17 @@ namespace ISAAR.MSolve.SamplesConsole
 
             Hexa20SimpleCantileverBeam.MakeCantileverBeam(model, 0, 0, 0, model.NodesDictionary.Count + 1, model.ElementsDictionary.Count + 1, 1);
 
-            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[48], DOF = DOFType.Z });
-            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[49], DOF = DOFType.Z });
-            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[50], DOF = DOFType.Z });
-            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[51], DOF = DOFType.Z });
+            model.Loads.Add(new Load() { Amount = -0.125, Node = model.Nodes[48], DOF = DOFType.Z });
+            model.Loads.Add(new Load() { Amount = -0.125, Node = model.Nodes[49], DOF = DOFType.Z });
+            model.Loads.Add(new Load() { Amount = -0.125, Node = model.Nodes[50], DOF = DOFType.Z });
+            model.Loads.Add(new Load() { Amount = -0.125, Node = model.Nodes[51], DOF = DOFType.Z });
 
-            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[52], DOF = DOFType.Z });
-            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[53], DOF = DOFType.Z });
-            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[54], DOF = DOFType.Z });
-            model.Loads.Add(new nodalLoad() { Amount = -0.125, Node = model.Nodes[55], DOF = DOFType.Z });
+            model.Loads.Add(new Load() { Amount = -0.125, Node = model.Nodes[52], DOF = DOFType.Z });
+            model.Loads.Add(new Load() { Amount = -0.125, Node = model.Nodes[53], DOF = DOFType.Z });
+            model.Loads.Add(new Load() { Amount = -0.125, Node = model.Nodes[54], DOF = DOFType.Z });
+            model.Loads.Add(new Load() { Amount = -0.125, Node = model.Nodes[55], DOF = DOFType.Z });
 
-
+            
             model.ConnectDataStructures();
 
             SolverSkyline solver = new SolverSkyline(model);
@@ -96,15 +96,15 @@ namespace ISAAR.MSolve.SamplesConsole
 
             Hexa20oneElementColumn.MakeCantileverBeam(model, 0, 0, 0, model.NodesDictionary.Count + 1, model.ElementsDictionary.Count + 1, 1);
 
-            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[5], DOF = DOFType.X });
-            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[6], DOF = DOFType.X });
-            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[17], DOF = DOFType.X });
-            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[18], DOF = DOFType.X });
+            model.Loads.Add(new Load() { Amount = 0.125, Node = model.Nodes[5], DOF = DOFType.X });
+            model.Loads.Add(new Load() { Amount = 0.125, Node = model.Nodes[6], DOF = DOFType.X });
+            model.Loads.Add(new Load() { Amount = 0.125, Node = model.Nodes[17], DOF = DOFType.X });
+            model.Loads.Add(new Load() { Amount = 0.125, Node = model.Nodes[18], DOF = DOFType.X });
 
-            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[7], DOF = DOFType.X });
-            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[10], DOF = DOFType.X });
-            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[19], DOF = DOFType.X });
-            model.Loads.Add(new nodalLoad() { Amount = 0.125, Node = model.Nodes[11], DOF = DOFType.X });
+            model.Loads.Add(new Load() { Amount = 0.125, Node = model.Nodes[7], DOF = DOFType.X });
+            model.Loads.Add(new Load() { Amount = 0.125, Node = model.Nodes[10], DOF = DOFType.X });
+            model.Loads.Add(new Load() { Amount = 0.125, Node = model.Nodes[19], DOF = DOFType.X });
+            model.Loads.Add(new Load() { Amount = 0.125, Node = model.Nodes[11], DOF = DOFType.X });
 
 
             model.ConnectDataStructures();
