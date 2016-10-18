@@ -17,15 +17,9 @@ namespace ISAAR.MSolve.SamplesConsole
             int nodeID = startNodeID;
 
             for (int j = 0; j < 4; j++)
-            {
-                if (nodeID % 2 == 0)
-                {
-                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX, Y = startY + 0.25, Z = startZ + 0.25 * (j / 2) });
-                }
-                else
-                {
-                    model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX, Y = startY, Z = startZ + 0.25 * (j / 2) });
-                }
+            {                
+                model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX, Y = (nodeID %2 == 0 ? startY + 0.25 : startY), Z = startZ + 0.25 * (j / 2) });
+                
                 model.NodesDictionary[nodeID].Constraints.Add(DOFType.X);
                 model.NodesDictionary[nodeID].Constraints.Add(DOFType.Y);
                 model.NodesDictionary[nodeID].Constraints.Add(DOFType.Z);
@@ -37,15 +31,8 @@ namespace ISAAR.MSolve.SamplesConsole
             {
                 for (int k = 0; k < 4; k++)
                 {
-                    if (nodeID % 2 == 0)
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.25 * (i + 1), Y = startY + 0.25, Z = startZ + 0.25 * (k / 2) });
-                    }
-                    else
-                    {
-                        model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.25 * (i + 1), Y = startY, Z = startZ + 0.25 * (k / 2) });
-                    }
-                    nodeID++;
+                     model.NodesDictionary.Add(nodeID, new Node() { ID = nodeID, X = startX + 0.25 * (i + 1), Y = (nodeID % 2 == 0 ? startY + 0.25 : startY), Z = startZ + 0.25 * (k / 2) });
+                     nodeID++;
                 }
             }
 

@@ -64,11 +64,8 @@ namespace ISAAR.MSolve.SamplesConsole
 
             HexaSimpleCantileverBeam.MakeCantileverBeam(model, 0, 0, 0, model.NodesDictionary.Count + 1, model.ElementsDictionary.Count + 1, 1);
 
-            model.Loads.Add(new Load() { Amount = -0.25, Node = model.Nodes[16], DOF = DOFType.Z });
-            model.Loads.Add(new Load() { Amount = -0.25, Node = model.Nodes[17], DOF = DOFType.Z });
-            model.Loads.Add(new Load() { Amount = -0.25, Node = model.Nodes[18], DOF = DOFType.Z });
-            model.Loads.Add(new Load() { Amount = -0.25, Node = model.Nodes[19], DOF = DOFType.Z });
-
+            for (int i = 16; i < 20; i++)
+                model.Loads.Add(new Load() { Amount = -0.25, Node = model.Nodes[i], DOF = DOFType.Z });
             model.ConnectDataStructures();
 
             SolverSkyline solver = new SolverSkyline(model);
